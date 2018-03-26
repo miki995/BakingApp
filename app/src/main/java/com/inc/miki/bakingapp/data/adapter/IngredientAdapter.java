@@ -7,17 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.baking.R;
-import com.example.android.baking.data.Ingredient;
+
+import com.inc.miki.bakingapp.R;
+import com.inc.miki.bakingapp.data.Ingredient;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-/**
- * Creates and populates views for the list of ingredients in the recipe.
- */
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
 

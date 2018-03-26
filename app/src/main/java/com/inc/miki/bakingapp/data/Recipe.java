@@ -5,12 +5,14 @@ import android.os.Parcelable;
 
 import com.google.gson.Gson;
 
+import java.util.List;
 
 /**
- * Created by miroslav on 3/20/18.
+ * Stores the data of the recipe.
  */
 
 public class Recipe implements Parcelable {
+
     private String name;
     private List<Ingredient> ingredients;
     private List<Step> steps;
@@ -73,16 +75,18 @@ public class Recipe implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
-        parcel.readTypedList(ingredients);
+        parcel.writeTypedList(ingredients);
         parcel.writeTypedList(steps);
         parcel.writeInt(servings);
         parcel.writeString(imageUrl);
     }
-    public String serialize(){
+
+    public String serialize() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
-    public static Recipe fromJson(String serializedRecipe){
+
+    public static Recipe fromJson(String serializedRecipe) {
         Gson gson = new Gson();
         return gson.fromJson(serializedRecipe, Recipe.class);
     }

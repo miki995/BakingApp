@@ -8,4 +8,104 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ButtonStep">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/button_step</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/button_step_text</item>
+    </style>
+
+    <style name="CardViewStep">
+        <item name="android:layout_width">@dimen/width_card_view_step</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardCornerRadius">@dimen/radius_card_view_step</item>
+        <item name="cardElevation">@dimen/elevation_card_view_step</item>
+    </style>
+
+    <style name="CardViewStepPrevious" parent="CardViewStep">
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toStartOf">@+id/guideline_step_details_vertical</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@+id/nested_scroll_view_step</item>
+        <item name="layout_constraintVertical_bias">1.0</item>
+    </style>
+
+    <style name="CardViewStepNext" parent="CardViewStep">
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toEndOf">@+id/guideline_step_details_vertical</item>
+        <item name="layout_constraintTop_toBottomOf">@+id/nested_scroll_view_step</item>
+        <item name="layout_constraintVertical_bias">1.0</item>
+    </style>
+
+    <style name="Guideline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="GuidelineVertical" parent="Guideline">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TextViewStepDescription">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_text_view_step_description</item>
+    </style>
+
+    <style name="ImageViewStep">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_image_view_step</item>
+        <item name="android:contentDescription">@string/thumbnail_url</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="PlayerViewStep">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="resize_mode">fixed_width</item>
+    </style>
+
+    <style name="PlayerViewStepLandscape">
+        <item name="android:layout_width">@dimen/width_player_view_step</item>
+        <item name="android:layout_height">@dimen/height_player_view_step</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="resize_mode">fill</item>
+    </style>
+
+    <style name="NestedScrollViewStep">
+        <item name="android:layout_width">@dimen/width_nested_scroll_view_step</item>
+        <item name="android:layout_height">@dimen/height_nested_scroll_view_step</item>
+        <item name="layout_constraintBottom_toTopOf">@+id/card_view_previous_step</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="TextViewIngredientQuantityMeasurement">
+        <item name="android:layout_width">@dimen/width_text_view_ingredient_quantity_measurement
+        </item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">
+            @dimen/margin_text_view_ingredient_quantity_measurement
+        </item>
+        <item name="android:layout_marginStart">
+            @dimen/margin_text_view_ingredient_quantity_measurement
+        </item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@color/colorTextDefault</item>
+    </style>
+
+    <style name="TextViewIngredientName">
+        <item name="android:layout_width">@dimen/width_text_view_ingredient_name</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@color/colorTextDefault</item>
+    </style>
+
 </resources>

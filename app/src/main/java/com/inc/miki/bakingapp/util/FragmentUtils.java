@@ -1,15 +1,12 @@
-package com.inc.miki.bakingapp.data.utils;
+package com.inc.miki.bakingapp.util;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-import com.example.android.baking.R;
-import com.example.android.baking.fragment.StepDetailsFragment;
+import com.inc.miki.bakingapp.R;
+import com.inc.miki.bakingapp.fragment.StepDetailsFragment;
 
-/**
- * Provides helper methods for adding and replacing Fragments.
- */
 
 public final class FragmentUtils {
 

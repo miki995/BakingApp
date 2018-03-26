@@ -1,10 +1,13 @@
 package com.inc.miki.bakingapp.activity;
 
 import android.app.LoaderManager;
+import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.content.Loader;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,27 +20,28 @@ import com.inc.miki.bakingapp.data.adapter.RecipeAdapter;
 import com.inc.miki.bakingapp.data.Recipe;
 import com.inc.miki.bakingapp.loader.RecipeLoader;
 import com.inc.miki.bakingapp.util.NetworkUtils;
+import com.inc.miki.bakingapp.widget.RecipeWidgetProvider;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements
+public class WidgetConfigurationActivity extends AppCompatActivity implements
         RecipeAdapter.RecipeOnClickHandler {
+    private static final int WIDGET_RECIPE_LOADER_ID = 0;
 
-    private static final int RECIPE_LOADER_ID = 0;
-
-    @BindView(R.id.recycler_view_recipes)
+    @BindView(R.id.widget_recycler_view_recipes)
     RecyclerView recyclerViewRecipes;
 
-    @BindView(R.id.empty_view)
+    @BindView(R.id.widget_empty_view)
     TextView emptyView;
 
-    @BindView(R.id.loading_indicator)
+    @BindView(R.id.widget_loading_indicator)
     ProgressBar loadingIndicator;
 
     private RecipeAdapter recipeAdapter;
+    private int appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 
     private LoaderManager.LoaderCallbacks<List<Recipe>> recipeLoaderCallbacks =
             new LoaderManager.LoaderCallbacks<List<Recipe>>() {
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements
         @Override
         public RecipeLoader onCreateLoader(int i, Bundle bundle) {
             loadingIndicator.setVisibility(View.VISIBLE);
-            return new RecipeLoader(MainActivity.this);
+            return new RecipeLoader(WidgetConfigurationActivity.this);
         }
 
         @Override
@@ -66,8 +70,23 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_widget_configuration);
         ButterKnife.bind(this);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.choose_a_recipe);
+        }
+
+        setResult(RESULT_CANCELED);
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            appWidgetId = extras.getInt(
+                    AppWidgetManager.EXTRA_APPWIDGET_ID,
+                    AppWidgetManager.INVALID_APPWIDGET_ID);
+        }
+
         recipeAdapter = new RecipeAdapter(this, this);
         recyclerViewRecipes.setAdapter(recipeAdapter);
 
@@ -78,9 +97,8 @@ public class MainActivity extends AppCompatActivity implements
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, spanCount);
         recyclerViewRecipes.setLayoutManager(layoutManager);
-
         if (NetworkUtils.isOnline(this)) {
-            getLoaderManager().initLoader(RECIPE_LOADER_ID, null, recipeLoaderCallbacks);
+            getLoaderManager().initLoader(WIDGET_RECIPE_LOADER_ID, null, recipeLoaderCallbacks);
         } else {
             loadingIndicator.setVisibility(View.GONE);
             recyclerViewRecipes.setVisibility(View.GONE);
@@ -91,8 +109,24 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onClick(Recipe recipe) {
-        Intent intent = new Intent(this, RecipeDetailsActivity.class);
-        intent.putExtra(getString(R.string.recipe), recipe);
-        startActivity(intent);
+        if (recipe == null) {
+            return;
+        }
+
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.baking_preferences),
+                0
+        );
+        String serializedRecipe = recipe.serialize();
+        sharedPreferences
+                .edit()
+                .putString(getString(R.string.serialized_recipe), serializedRecipe)
+                .apply();
+
+        Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE, null, this, RecipeWidgetProvider.class);
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, new int[]{appWidgetId});
+        setResult(RESULT_OK, intent);
+        sendBroadcast(intent);
+        finish();
     }
 }

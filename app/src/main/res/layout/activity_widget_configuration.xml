@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.WidgetConfigurationActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_recipes"
+        android:id="@+id/widget_recycler_view_recipes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/margin_recycler_view_recipes_horizontal"
         android:layout_marginTop="@dimen/margin_recycler_view_recipes_horizontal" />
 
     <TextView
-        android:id="@+id/empty_view"
+        android:id="@+id/widget_empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -21,7 +21,7 @@
         android:visibility="gone" />
 
     <ProgressBar
-        android:id="@+id/loading_indicator"
+        android:id="@+id/widget_loading_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />

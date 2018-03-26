@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.inc.miki.bakingapp.R;
 import com.inc.miki.bakingapp.data.Recipe;
+import com.inc.miki.bakingapp.util.ImageUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,9 +20,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by miroslav on 3/20/18.
- */
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
     private Context context;

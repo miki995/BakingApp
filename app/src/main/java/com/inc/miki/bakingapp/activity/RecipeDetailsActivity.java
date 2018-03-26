@@ -1,22 +1,24 @@
 package com.inc.miki.bakingapp.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v4.app.FragmentManager;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 
 import com.inc.miki.bakingapp.R;
-import com.inc.miki.bakingapp.data.ExoPlayerIdlingResource;
+import com.inc.miki.bakingapp.data.adapter.StepAdapter;
 import com.inc.miki.bakingapp.data.Recipe;
 import com.inc.miki.bakingapp.data.Step;
-import com.inc.miki.bakingapp.data.utils.FragmentUtils;
 import com.inc.miki.bakingapp.fragment.RecipeDetailsFragment;
 import com.inc.miki.bakingapp.fragment.StepDetailsFragment;
+import com.inc.miki.bakingapp.idlingresource.ExoPlayerIdlingResource;
+import com.inc.miki.bakingapp.util.FragmentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +66,7 @@ public class RecipeDetailsActivity extends AppCompatActivity implements
 
             if (getResources().getBoolean(R.bool.isTablet)) {
                 List<Step> steps = recipe.getSteps();
-                if (steps != null ) {
+                if (steps != null) {
                     bundle = new Bundle();
                     bundle.putParcelableArrayList(getString(R.string.steps), (ArrayList<Step>) steps);
                     bundle.putInt(getString(R.string.step_position), position);

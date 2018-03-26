@@ -1,12 +1,9 @@
-package com.inc.miki.bakingapp.data;
+package com.inc.miki.bakingapp.media;
 
 import android.support.v4.media.session.MediaSessionCompat;
 
 import com.google.android.exoplayer2.SimpleExoPlayer;
 
-/**
- * Receives commands from controllers to update the SimpleExoPlayer.
- */
 
 public class MediaSessionCallback extends MediaSessionCompat.Callback {
 

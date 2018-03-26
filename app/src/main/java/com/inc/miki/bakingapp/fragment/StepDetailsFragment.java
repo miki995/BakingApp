@@ -23,13 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.baking.R;
-import com.example.android.baking.activity.RecipeDetailsActivity;
-import com.example.android.baking.activity.StepDetailsActivity;
-import com.example.android.baking.data.Step;
-import com.example.android.baking.media.MediaSessionCallback;
-import com.example.android.baking.util.ImageUtils;
-import com.example.android.baking.util.NetworkUtils;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -46,6 +39,13 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
+import com.inc.miki.bakingapp.R;
+import com.inc.miki.bakingapp.activity.RecipeDetailsActivity;
+import com.inc.miki.bakingapp.activity.StepDetailsActivity;
+import com.inc.miki.bakingapp.data.Step;
+import com.inc.miki.bakingapp.media.MediaSessionCallback;
+import com.inc.miki.bakingapp.util.ImageUtils;
+import com.inc.miki.bakingapp.util.NetworkUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -53,14 +53,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link StepDetailsFragment.StepDetailsOnClickListener} interface
- * to handle interaction events.
- * Use the {@link StepDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class StepDetailsFragment extends Fragment implements ExoPlayer.EventListener {
 
     private static final String TAG = StepDetailsFragment.class.getSimpleName();
@@ -97,12 +89,6 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
 
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment.
-     *
-     * @return A new instance of fragment StepDetailsFragment.
-     */
     public static StepDetailsFragment newInstance(Bundle bundle) {
         StepDetailsFragment stepDetailsFragment = new StepDetailsFragment();
         stepDetailsFragment.setArguments(bundle);
@@ -267,7 +253,7 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
             final int[] position = savedInstanceState.getIntArray(getString(R.string.scroll_position));
-            if(position != null) {
+            if (position != null) {
                 nestedScrollViewStep.post(new Runnable() {
                     public void run() {
                         nestedScrollViewStep.scrollTo(position[0], position[1]);
@@ -299,9 +285,6 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
         exoPlayer.setPlayWhenReady(false);
     }
 
-    /**
-     * Releases the player when the activity is destroyed.
-     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -312,9 +295,6 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
         }
     }
 
-    /**
-     * Releases ExoPlayer.
-     */
     private void releasePlayer() {
         if (exoPlayer != null) {
             exoPlayer.stop();
@@ -383,7 +363,7 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
 
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-        if(playbackState == ExoPlayer.STATE_READY && playWhenReady){
+        if (playbackState == ExoPlayer.STATE_READY && playWhenReady) {
             stateBuilder.setState(
                     PlaybackStateCompat.STATE_PLAYING,
                     exoPlayer.getCurrentPosition(),
@@ -426,12 +406,7 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
 
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     */
+
     public interface StepDetailsOnClickListener {
         void onStepSelected(int position);
     }

@@ -9,17 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.baking.R;
-import com.example.android.baking.data.Step;
+
+import com.inc.miki.bakingapp.R;
+import com.inc.miki.bakingapp.data.Step;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Creates and populates views for the list of steps in the recipe.
- */
 
 public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder> {
 

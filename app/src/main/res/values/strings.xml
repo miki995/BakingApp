@@ -1,3 +1,45 @@
 <resources>
-    <string name="app_name">BakingApp</string>
+    <string name="app_name">Baking</string>
+    <string name="request_url" translatable="false">https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json</string>
+    <string name="serves">Serves: %1$s</string>
+    <string name="recipe" translatable="false">recipe</string>
+    <string name="name" translatable="false">name</string>
+    <string name="servings" translatable="false">servings</string>
+    <string name="ingredients" translatable="false">ingredients</string>
+    <string name="ingredient" translatable="false">ingredient</string>
+    <string name="measure" translatable="false">measure</string>
+    <string name="quantity" translatable="false">quantity</string>
+    <string name="steps" translatable="false">steps</string>
+    <string name="description" translatable="false">description</string>
+    <string name="video_url" translatable="false">videoURL</string>
+    <string name="thumbnail_url" translatable="false">thumbnailURL</string>
+    <string name="error_creating_url" translatable="false">Error creating url.</string>
+    <string name="error_retrieving_data_response_code" translatable="false">Error retrieving data. Response code:</string>
+    <string name="error_retrieving_data" translatable="false">Error retrieving movie data.</string>
+    <string name="error_closing_input_stream" translatable="false">Error closing input stream.</string>
+    <string name="error_parsing_response" translatable="false">Error parsing JSON response</string>
+    <string name="get" translatable="false">GET</string>
+    <string name="no_internet_connection">No internet connection.</string>
+    <string name="ingredients_header">Ingredients:</string>
+    <string name="steps_header">Steps:</string>
+    <string name="short_description" translatable="false">shortDescription</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="image" translatable="false">image</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="step_position" translatable="false">step_position</string>
+    <string name="nutella_pie">Nutella Pie</string>
+    <string name="brownies">Brownies</string>
+    <string name="yellow_cake">Yellow Cake</string>
+    <string name="cheesecake">Cheesecake</string>
+    <string name="action_bar" translatable="false">action_bar</string>
+    <string name="recipe_cannot_be_displayed">Recipe cannot be displayed.</string>
+    <string name="baking_preferences" translatable="false">baking_preferences</string>
+    <string name="serialized_recipe" translatable="false">serialized_recipe</string>
+    <string name="scroll_position" translatable="false">scroll_position</string>
+    <string name="selected_row_index" translatable="false">selected_row_index</string>
+    <string name="choose_a_recipe">Choose a recipe</string>
+    <string name="must_implement" translatable="false">must implement</string>
+    <string name="media_url_not_found">Media URL could not be found.</string>
+    <string name="step_could_not_be_loaded">Step could not be loaded.</string>
 </resources>

@@ -1,13 +1,10 @@
-package com.inc.miki.bakingapp.data;
+package com.inc.miki.bakingapp.idlingresource;
 
 import android.support.annotation.Nullable;
 import android.support.test.espresso.IdlingResource;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * Allows for testing of the ExoPlayer in Espresso UI tests.
- */
 
 public class ExoPlayerIdlingResource implements IdlingResource {
 
@@ -30,10 +27,7 @@ public class ExoPlayerIdlingResource implements IdlingResource {
         this.callback = callback;
     }
 
-    /**
-     * Sets the new idle state, if idleNow is true, it pings the {@link ResourceCallback}.
-     * @param idleNow false if there are pending operations, true if idle.
-     */
+
     public void setIdleState(boolean idleNow) {
         this.idleNow.set(idleNow);
         if (idleNow && callback != null) {

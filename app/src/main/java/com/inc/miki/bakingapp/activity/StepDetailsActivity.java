@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 
 import com.inc.miki.bakingapp.R;
-import com.inc.miki.bakingapp.data.ExoPlayerIdlingResource;
 import com.inc.miki.bakingapp.data.Step;
-import com.inc.miki.bakingapp.data.utils.FragmentUtils;
 import com.inc.miki.bakingapp.fragment.StepDetailsFragment;
+import com.inc.miki.bakingapp.idlingresource.ExoPlayerIdlingResource;
+import com.inc.miki.bakingapp.util.FragmentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,6 @@ import butterknife.ButterKnife;
 
 public class StepDetailsActivity extends AppCompatActivity implements
         StepDetailsFragment.StepDetailsOnClickListener {
-
     @Nullable
     private ExoPlayerIdlingResource idlingResource;
 

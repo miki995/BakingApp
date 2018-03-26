@@ -1,12 +1,8 @@
-package com.inc.miki.bakingapp.data.utils;
+package com.inc.miki.bakingapp.util;
 
 import android.content.Context;
 
-import com.example.android.baking.R;
-
-/**
- * Provides helper methods to assist in loading the correct image for a recipe.
- */
+import com.inc.miki.bakingapp.R;
 
 public final class ImageUtils {
 
@@ -23,7 +19,7 @@ public final class ImageUtils {
         } else if (recipeName.equals(context.getString(R.string.yellow_cake))) {
             drawableId = R.drawable.yellow_cake;
         } else if (recipeName.equals(context.getString(R.string.cheesecake))) {
-            drawableId = R.drawable.cheesecake;
+            drawableId = R.drawable.cheese_cake;
         }
         return drawableId;
     }
